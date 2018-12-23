@@ -1,0 +1,75 @@
+####################
+# Example Web Config
+####################
+# This file is an example for how the configuration
+# of a single website might look.
+# This configuration will work out of the box.
+####################
+
+server_names:
+  - "localhost"
+  - "www.example.com"
+  - "example.com"
+  - "*.example.com"
+listen_ports:
+  - 80
+  - 443
+request_list_type: whitelist
+request_list:
+  - 192.168.0.0
+  - 10.0.0.0
+  - 172.0.0.0
+site_logs:
+  access_log: "example.com.access.log"
+  error_log: "example.com.error.log"
+  general_log: "example.com.log"
+  log_level: Default
+main_file: "index.*"
+###
+# The default file type.
+# If a URL is passed to the server with a missing file extension, 
+# the URL is either pointing to a directory, or to a file.
+# This is also useful if you want to hide the types of file you're using.
+# E.g. if you're ashamed of using PHP, you can hide it.
+###
+default_file_type: "*.html"
+###
+# Allowed executables.
+# Useful if you only want a subset of 
+# file types to be executed by the server.
+# E.g.: If you only want .php files to be executed,
+# enter *.php.
+# If you want all configured files types to be executable, 
+# leave the list empty.
+# Files not configured to be executed here will be read
+# and output to the client. 
+###
+allow_exec: []
+###
+# Disallowed executables.
+# To disable specific executable files,
+# enter them in to the list below.
+# If you do not want any files to be disallowed,
+# leave the list empty.
+# Note: this list is dominant over the allow_exec list.
+# If the same file types are listed in the two lists,
+# then this list will be dominant and the file disallowed.
+###
+disallow_exec: []
+document_root: "example.com/www-data"
+site_log_root: "example.com/log"
+###
+# Allow explicit subdomains.
+# If this value is set to yes/true, then WebX will re-direct subdomain traffic to specific subdirectories
+# of the document root.
+# This function is useful if you want different information to be encapsulated from each other.
+# A possibility would be:
+# document_root/www => Standard traffic. By default, WebX will redirect www.*.com and *.com to the www-directory.
+# document_root/api => If your web-application exposes an API, but you do not want it to be able to view data from
+# the www-directory (or other subdomain-directories, for that matter) you can place it here.
+# 
+# Subdirectories are encapsulated from each other. WebX will actively attempt to prevent subdomains from using 
+# each others' files. This does, however, mean that WebX will scan files and remove references to anywhere 
+# outside the subdirectory from the requested file.  
+###
+allow_subdomains: no

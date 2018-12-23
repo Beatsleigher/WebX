@@ -1,0 +1,108 @@
+####################
+##  WebX Application Config File
+####################
+# This configuration file is the most basic config file
+# for the entire application.
+# Here you define where the rest of the configs lie
+# and set application-base logging information.
+#
+# This config file is always in the same directory as the application.
+# If this file is not found (because it was renamed, moved, etc.) WebX
+# will automatically re-create it from its internal template.
+# If the file becomes unreadable, due to malformed YAML for example,
+# WebX will prompt you to re-create it or exit the application.
+# If the internal template contains members/configs not found
+# in this file, you will be prompted to upgrade.
+# If an upgrade to this file is not allowed, the application will
+# not boot. 
+# Upgrading this config file will not destroy you configs, unless
+# the config has been removed. 
+# Configs changed to end with _depr are deprecated. They may be recognized
+# in the next couple of versions, however they WILL be removed.
+# Deprecated configs set to values other than null or their respective defaults
+# will cause WebX to warn you in the logs. 
+#
+# For more information on YAML, visit http://yaml.org.
+####################
+
+logger_config:
+  ###
+  # Log format.
+  # The log format defines the format of the entire logging message.
+  # The default is usually best-suited for most people.
+  # Default value: [${cur_date}] [${cur_time}] :: --${log_lvl}-- ${log_msg}
+  # Consult the WebX Wiki for more information on the logging format and usable variables. 
+  ###
+  log_format: null
+  ###
+  # Logger type.
+  # The logger type defines how the application logs information.
+  # By default, WebX provides two loggers. The exact number may change, depending on
+  # how the application is used and who compiled it. 
+  # By default, ConsoleLogging and FileLogging are enabled.  
+  # You may use multiple loggers during runtime. Your mileage may vary depending on
+  # the actual loggers used.
+  ###
+  log_type:
+    - ConsoleLogger
+    - FileLogger
+  ###
+  # Logging level.
+  # Consult the WebX Wiki for more information on logging levels.
+  ###
+  log_level: Default
+  ###
+  # Log directory.
+  # This is the default directory where WebX will write its file logs to,
+  # if file logging is enabled.
+  # Site logs (individual log files for specific websites) will generally be written to this directory.
+  # You may also enter absolute paths for specific websites.
+  #
+  # Setting this value to null will configure WebX to automatically search for 
+  # the correct directory, depending on the operating environment.
+  ###
+  log_dir: null
+  rotate_logs: true
+  max_rotations: 10
+  ###
+  # Log rotate threshold.
+  # This defines the maximum file size of any given log, before
+  # it is rotated.
+  # Rotation happens once every day at 00:00, or depending on the file size.
+  # Whichever comes first.
+  #
+  # Values from B (Bytes), to K (Kibibytes), M (Mebibytes), G (Gibibytes) are acceptable.
+  # Letter case is unimportant. 
+  ###
+  rotate_threshold_mb: 1024m
+webx_config:
+  ###
+  # Main config directory.
+  # In an attempt to keep the application modular, WebX' main configs
+  # such as site configs, file associations, user configs, and scripting
+  # configs are stored in a separate directory.
+  # By setting this config to null, WebX will attempt to use the correct directory
+  # depending on the OS.
+  # You may, however, set this value to anything you like.
+  ###
+  config_dir: null
+  ###
+  # WWW root directory.
+  # This sets the directory where WebX will look for websites by default.
+  # By setting this config once, individual website configurations become 
+  # easier to manage. You may use absolute paths in individual website configs
+  # however this option will cause WebX to look in this directory by default.
+  # Setting this value to null will let WebX attempt to choose the correct
+  # directory, depending on the operating system.
+  # E.g.: for Unix-like systems: /var/www/
+  ###
+  www_root: null
+  ###
+  # Scripting directory.
+  # Scripts to directly manipulate WebX are read from this directory.
+  # For more information on scripting WebX, consult the WebX Wiki.
+  ###
+  script_dir: null
+
+
+

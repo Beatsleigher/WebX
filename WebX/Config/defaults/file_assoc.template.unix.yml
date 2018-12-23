@@ -1,0 +1,32 @@
+####################
+# WebX File Association Table
+####################
+# Use this file to associate any file extension
+# with an application.
+# You may assign any extension to any application.
+# This means you can also use Bash scripts (for example) to 
+# generate the HTML output for websites.
+# 
+# The default values here are the most sensible for
+# most uses.
+# These values are checked on each startup.
+# WebX will refuse to boot with erroneous values!
+# Wildcards are supported. Regular expressions are not.
+# Generally, WebX will search the $PATH variable for the executables.
+# You may also put absolute paths.
+####################
+
+file_assocs:
+  /bin/bash:
+    - "*.sh"
+  /usr/bin/php:
+    - "*.php"
+    - "*.php*"
+    - "*.phtml"
+  /usr/bin/lua:
+    - "*.lua"
+  /usr/bin/python:
+    - "*.py"
+  /usr/bin/node:
+    - "*.js"
+  
